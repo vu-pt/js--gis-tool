@@ -1,0 +1,58 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>ArcGIS JavaScript Tutorials: Create a Starter App</title>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css" />
+    <link rel="stylesheet" href="./bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://js.arcgis.com/4.29/"></script>
+</head>
+
+<body>
+    <h2 class="pb-3">Point Generator</h2>
+    <div class="d-flex">
+        <div class="mx-2 d-flex flex-column">
+            <div class="d-flex py-1">
+                <div class="label">x1:</div>
+                <input type="text" id="x1">
+            </div>
+            <div class="d-flex py-1">
+                <div class="label">y1:</div>
+                <input type="text" id="y1">
+            </div>
+            <div class="d-flex py-1">
+                <div class="label">z1:</div>
+                <input type="text" id="z1">
+            </div>
+            <h3>New point</h3>
+            <div class="d-flex py-1">
+                <div class="label">Distance:</div>
+                <input type="text" id="d">
+            </div>
+            <div class="d-flex py-1">
+                <div class="label">Heading:</div>
+                <input type="text" id="a">
+            </div>
+            <div class="d-flex py-1">
+                <div class="label">x2:</div>
+                <input type="text" id="x2">
+            </div>
+            <div class="d-flex py-1">
+                <div class="label">y2:</div>
+                <input type="text" id="y2">
+            </div>
+            <div class="d-flex flex-column py-1">
+                <div class="label">History</div>
+                <textarea id="points"></textarea>
+            </div>
+        </div>
+        <div id="viewDiv"></div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./main.js"></script>
+</body>
+
+</html>
