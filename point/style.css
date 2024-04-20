@@ -9,9 +9,13 @@ body,
 }
 
 .label {
-    width: 100px;
+    min-width: 100px;
+}
+
+.col-5 .d-flex > input {
+    width: 100%;
 }
 
 #points {
-    min-height: 150px;
+    min-height: 230px;
 }

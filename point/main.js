@@ -46,10 +46,10 @@ function savePoint(x, y, z) {
 }
 function logPoint(point) {
     if (point[2]) {
-        $('#points').val($('#points').val() +"\n"+ JSON.stringify(point));
+        $('#points').val($('#points').val() + "\n" + JSON.stringify(point) + ',');
     }
     else {
-        $('#points').val($('#points').val() +"\n"+ JSON.stringify([point[0], point[1]]));
+        $('#points').val($('#points').val() + "\n" + JSON.stringify([point[0], point[1]]) + ',');
     }
 }
 require([
@@ -87,7 +87,7 @@ require([
         });
     };
 
-    var onDraw = function() {
+    var onDraw = function () {
         graphicsLayer.removeAll();
         graphicsLayer.add(drawPoint(clickedPoint[0], clickedPoint[1]));
         logPoint(clickedPoint);
@@ -99,7 +99,7 @@ require([
         }
     }
 
-    $('#draw-btn').click(function(){
+    $('#draw-btn').click(function () {
         onDraw();
     });
 
@@ -114,7 +114,7 @@ require([
                     savePoint(event.mapPoint.longitude, event.mapPoint.latitude);
                     $('#p1').val(JSON.stringify([clickedPoint[0], clickedPoint[1]]));
                 }
-                
+
             }
         })
     });
