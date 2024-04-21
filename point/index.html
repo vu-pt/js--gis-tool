@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>ArcGIS JavaScript Tutorials: Create a Starter App</title>
+    <title>ArcGIS Tools</title>
 
     <link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css" />
     <link rel="stylesheet" href="../bootstrap/bootstrap.min.css" />
@@ -12,9 +12,9 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-secondary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">GisTool</a>
+            <a class="navbar-brand" href="../index.html"><b>GisTool</b></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -22,31 +22,28 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/js-gis-tool/point/">Point</a>
+                        <a class="nav-link active" aria-current="page" href="#">Point</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                    </li> -->
                 </ul>
             </div>
         </div>
     </nav>
     <div class="container">
-        <h2 class="pb-3">Js Gis Tool</h2>
+        <div class="d-flex header">
+            <h1 class="pb-3">Js Gis Tool</h1>
+            <div class="ms-2">(<a href="https://github.com/vu-pt/js-gis-tool" target="_blank">git repo</a>)</div>
+        </div>
         <div class="row align-items-start">
-            <div class="col-5">
+            <div class="col-sm-5">
                 <div class="d-flex py-1">
-                    <div class="label">(x1, y1[, z]) = </div>
+                    <div class="label" id="label-p1">(x1, y1) = </div>
                     <input type="text" id="p1">
                 </div>
                 <div class="d-flex py-1">
                     <div class="label">z:(optional)</div>
                     <input type="text" id="z">
                 </div>
-                <div class="d-flex py-1">
+                <div class="d-flex py-1 mt-3">
                     <div class="label">Distance:</div>
                     <input type="text" id="d">
                 </div>
@@ -55,19 +52,19 @@
                     <input type="text" id="a">
                 </div>
                 <div class="d-flex">
-                    <h3>New point</h3>
-                    <button class="btn-success btn-sm ms-auto my-2" id="draw-btn">Draw It</button>
+                    <h4>New point</h4>
+                    <button class="btn btn-success btn-sm ms-auto my-2" id="draw-btn">Draw It</button>
                 </div>
                 <div class="d-flex py-1">
-                    <div class="label">(x2, y2[, z]) = </div>
-                    <input readonly type="text" id="p2">
+                    <div class="label" id="label-p2">(x2, y2) = </div>
+                    <input readonly disabled type="text" id="p2">
                 </div>
                 <div class="d-flex flex-column py-1">
                     <div class="label">History:</div>
                     <textarea id="points"></textarea>
                 </div>
             </div>
-            <div id="viewDiv" class="col"></div>
+            <div id="viewDiv" class="col-sm" title="click somewhere to get coordinates"></div>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

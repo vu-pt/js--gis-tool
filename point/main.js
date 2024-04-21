@@ -52,6 +52,16 @@ function logPoint(point) {
         $('#points').val($('#points').val() + "\n" + JSON.stringify([point[0], point[1]]) + ',');
     }
 }
+$('#z').change(function (){
+    if ($('#z').val()) {
+        $('#label-p1').html('(x1, y1, z) = ');
+        $('#label-p2').html('(x2, y2, z) = ');
+    }
+    else {
+        $('#label-p1').html('(x1, y1) = ');
+        $('#label-p2').html('(x2, y2) = ');
+    }
+});
 require([
     "esri/Map",
     "esri/views/MapView",
@@ -94,8 +104,14 @@ require([
         if ($('#d').val() && $('#a').val()) {
             const newPoint = findNewPoint([clickedPoint[0], clickedPoint[1]], $('#a').val(), $('#d').val());
             $('#p2').val(JSON.stringify(newPoint));
+            if ($('#z').val()) {
+                $('#p2').val(JSON.stringify([...newPoint, Number($('#z').val())]));
+                logPoint([...newPoint, Number($('#z').val())]);
+            } else {
+                $('#p2').val(JSON.stringify(newPoint));
+                logPoint(newPoint);
+            }
             graphicsLayer.add(drawPoint(newPoint[0], newPoint[1], true));
-            logPoint(newPoint);
         }
     }
 

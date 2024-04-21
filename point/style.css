@@ -12,10 +12,16 @@ body,
     min-width: 100px;
 }
 
-.col-5 .d-flex > input {
+.col-sm-5 .d-flex > input {
     width: 100%;
 }
 
 #points {
     min-height: 230px;
+}
+
+.header {
+    * {
+        line-height: 40px;
+    }
 }

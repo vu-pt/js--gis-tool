@@ -1,0 +1,66 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>ArcGIS Tools</title>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css" />
+    <link rel="stylesheet" href="./bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://js.arcgis.com/4.29/"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-secondary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><b>GisTool</b></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./point/index.html">Point</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1 class="pb-3">Gis Tools</h1>
+        <div class="row align-items-start">
+            <div class="col-sm-3">
+                <h4>Generate a point with distance and heading</h4>
+                <a href="http://www.movable-type.co.uk/scripts/latlong.html">Reference</a>
+                and <a href="./point/index.html">Demo</a>
+                <ul>
+                    <li>φ is latitude, λ is longitude.</li>
+                    <li>θ is the bearing (clockwise from north).</li>
+                    <li>δ is the angular distance d/R.</li>
+                    <li>d being the distance travelled, R the earth’s radius.</li>
+                </ul>
+            </div>
+            <div class="col-sm">
+                JS function to calculate new point:
+                <textarea disabled readonly class="w-100 p-3" style="height: 370px;">
+function findNewPoint(coord, bearing, distance) {
+    var radius = 6371e3, //meters
+        δ = Number(distance) / radius, // angular distance in radians
+        θ = toRad(Number(bearing)),
+        φ1 = toRad(Number(coord[1])),
+        λ1 = toRad(Number(coord[0]));
+    var φ2 = Math.asin(Math.sin(φ1) * Math.cos(δ) + Math.cos(φ1) * Math.sin(δ) * Math.cos(θ));
+    var λ2 = λ1 + Math.atan2(Math.sin(θ) * Math.sin(δ) * Math.cos(φ1), Math.cos(δ) - Math.sin(φ1) * Math.sin(φ2));
+    λ2 = (λ2 + 3 * Math.PI) % (2 * Math.PI) - Math.PI; // normalise to -180..+180°
+
+    return [toDeg(λ2), toDeg(φ2)]; //[lon, lat]
+}</textarea>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</body>
+
+</html>
